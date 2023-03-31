@@ -1,31 +1,40 @@
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express from 'express';
-import helmet from 'helmet';
-import morgan from 'morgan';
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import helmet from "helmet";
+import morgan from "morgan";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
+const IS_PROD = process.env.NODE_ENV === "production";
 
 const app = express();
 
+import accountRouter from "./routes/account.js";
+import todoRouter from "./routes/todo.js";
+import b2cRouter from "./routes/b2c.js";
+import passport from "passport";
+import { passportAzureAdBearerStrategy } from "./utils/passport-azure-ad-bearer-strategy.js";
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(morgan('dev'));
+app.use(morgan(IS_PROD ? "combined" : "dev"));
 app.use(helmet());
 app.use(cors());
 
-app.get('/', async (req, res) => {
-    // simulate a slow response
-    const pause = new Promise<null>((resolve) => {
-        setTimeout(() => resolve(null), 2000);
-    });
-    await pause;
+app.use(passport.initialize());
 
-    res.send('Hello World!');
+passport.use(passportAzureAdBearerStrategy);
+
+app.get("/ping", async (req, res) => {
+    res.status(200).send("pong");
 });
 
+app.use("/account", accountRouter);
+app.use("/todo", todoRouter);
+app.use("/b2c", b2cRouter);
+
 app.listen(PORT, () => {
-    console.log(`Express Typescript starter listening on port ${PORT}...`);
+    console.log(`listening on port ${PORT}...`);
 });

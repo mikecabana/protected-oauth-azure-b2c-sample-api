@@ -62,3 +62,7 @@ typings/
 
 # build output
 dist
+
+.azure
+
+.vscode/settings.json

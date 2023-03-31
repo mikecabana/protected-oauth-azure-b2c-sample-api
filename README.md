@@ -1,6 +1,12 @@
-# Express Typescript Starter Project
 
-A starter node app using express and typescript! A super simple base to get off the ground quickly. It's unopiniated, has no structure(ish) and no templating.
+# Sample Azure B2C Api Connector
+
+Register in user flows in order to augment the sign in and signup experience.
+
+
+> Based on [Express Typescript Starter Project](https://github.com/mikecabana/express-ts-starter)
+>
+> A starter node app using express and typescript! A super simple base to get off the ground quickly. It's unopiniated, has no structure(ish) and no templating.
 
 ## How to use?
 

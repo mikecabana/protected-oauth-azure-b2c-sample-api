@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "tsc": "tsc",
-        "build": "tsc",
+        "build": "npm run tsc",
         "dev": "nodemon ./src/app.ts",
         "start": "npm run build && node dist/app.js",
         "lint": "eslint . --ext .ts"
@@ -35,8 +35,11 @@
         "@types/express": "^4.17.14",
         "@types/morgan": "^1.9.3",
         "@types/node": "^18.11.9",
+        "@types/passport": "^1.0.12",
+        "@types/passport-azure-ad": "^4.3.1",
         "@typescript-eslint/eslint-plugin": "^5.45.0",
         "@typescript-eslint/parser": "^5.45.0",
+        "dotenv": "^16.0.3",
         "eslint": "^8.28.0",
         "nodemon": "^2.0.20",
         "ts-node": "^10.9.1",
@@ -45,9 +48,11 @@
     },
     "dependencies": {
         "cors": "^2.8.5",
-        "dotenv": "^16.0.3",
+        "cross-fetch": "^3.1.5",
         "express": "^4.18.2",
         "helmet": "^6.0.1",
-        "morgan": "^1.10.0"
+        "morgan": "^1.10.0",
+        "passport": "^0.6.0",
+        "passport-azure-ad": "^4.3.4"
     }
 }
