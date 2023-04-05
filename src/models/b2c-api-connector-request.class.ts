@@ -1,11 +1,7 @@
 export class B2cApiConnectorRequest {
     "email": string;
     "identities": {
-        signInType:
-            | "emailAddress"
-            | "userName"
-            | "federated"
-            | "userPrincipalName";
+        signInType: "emailAddress" | "userName" | "federated" | "userPrincipalName";
         issuer: string;
         issuerAssignedId: string;
     }[];
@@ -13,7 +9,8 @@ export class B2cApiConnectorRequest {
     "step":
         | "PostFederationSignup"
         | "PostAttributeCollection"
-        | "PreTokenIssuance";
+        | "PreTokenIssuance"
+        | "PreTokenApplicationClaims";
     "ui_locales": string;
     "objectId": string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
